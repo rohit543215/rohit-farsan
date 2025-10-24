@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rohit Farsan House – Fresh Farsan & Snacks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f9ef;
+      color: #222;
+    }
+    header {
+      background: #fff;
+      padding: 20px 0;
+      border-bottom: 1px solid #eaeaea;
+      overflow: hidden;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 2em;
+      color: #213217;
+      margin-left: 32px;
+      letter-spacing: -1px;
+      float: left;
+      text-decoration: none;
+    }
+    nav {
+      float: right;
+      margin-right: 32px;
+    }
+    nav a {
+      color: #4a4a4a;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #7fa443;
+      border-bottom: 2px solid #7fa443;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 40px auto 0 auto;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(120, 130, 101, 0.12);
+      clear: both;
+    }
+    .headline {
+      text-align: center;
+      font-size: 2.8em;
+      font-weight: bold;
+      margin-top: 12px;
+      margin-bottom: 18px;
+      color: #517C31;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 1.35em;
+      color: #578d2e;
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+    .section-title {
+      text-align: center;
+      margin-top: 48px;
+      margin-bottom: 32px;
+      font-size: 2.2em;
+      color: #4B7F2D;
+      font-weight: bold;
+    }
+    .categories {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .category-card {
+      background: #f4f9ef;
+      border-radius: 12px;
+      padding: 40px 32px;
+      flex: 1 1 280px;
+      min-width: 280px;
+      max-width: 350px;
+      box-shadow: 0 2px 8px #dadada2e;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 16px rgba(120, 130, 101, 0.15);
+    }
+    .category-icon {
+      font-size: 4em;
+      margin-bottom: 20px;
+    }
+    .category-card h3 {
+      font-size: 1.6em;
+      margin-bottom: 16px;
+      color: #4B7F2D;
+    }
+    .category-card p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      font-size: 1em;
+    }
+    .category-btn {
+      display: inline-block;
+      background: #73bf32;
+      color: #fff;
+      border: none;
+      padding: 12px 36px;
+      border-radius: 100px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .category-btn:hover {
+      background: #86d641;
+    }
+    .card {
+      background: #f8fff2;
+      border-radius: 16px;
+      padding: 36px 32px;
+      margin: 32px 0;
+      box-shadow: 0 3px 16px rgba(130, 160, 60, 0.07);
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 1.8em;
+      margin-bottom: 14px;
+      color: #4B7F2D;
+    }
+    .card p {
+      line-height: 1.8;
+      color: #426A3C;
+      font-size: 1.1em;
+    }
+    .contact-card {
+      background: #f4f9ef;
+      border-radius: 14px;
+      padding: 28px 20px;
+      box-shadow: 0 3px 16px rgba(130, 160, 60, 0.07);
+      margin-top: 32px;
+      text-align: center;
+    }
+    .contact-card h2 {
+      color: #4B7F2D;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+    .contact-card p {
+      font-size: 1.1em;
+      margin: 10px 0;
+      color: #426A3C;
+    }
+    .contact-card a {
+      color: #4B7F2D;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: #73bf32;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 950px) {
+      .categories {
+        flex-direction: column;
+        align-items: center;
+      }
+      .headline {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">Rohit Farsan House<span style="color:#E5C239;">&#9679;</span></a>
+    <nav>
+      <a href="index.html" class="active">HOME</a>
+      <a href="products.html">PRODUCTS</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact-us.html">CONTACT</a>
+    </nav>
+    <div style="clear: both"></div>
+  </header>
+
+  <div class="container">
+    <div class="headline">
+      Welcome to Rohit Farsan House
+    </div>
+    <div class="subtitle">
+      Your one-stop shop for fresh, authentic farsan & snacks
+    </div>
+
+    <div class="section-title">Our Specialties</div>
+    <div class="categories">
+      <div class="category-card">
+        <div class="category-icon">🥟</div>
+        <h3>Traditional Farsan</h3>
+        <p>Authentic Gujarati farsan made with traditional recipes and fresh ingredients.</p>
+        <a class="category-btn" href="products.html">VIEW PRODUCTS</a>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon">🍪</div>
+        <h3>Namkeen & Snacks</h3>
+        <p>Crispy, delicious namkeen perfect for every occasion and celebration.</p>
+        <a class="category-btn" href="products.html">VIEW PRODUCTS</a>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon">🍬</div>
+        <h3>Special Combos</h3>
+        <p>Handpicked combo packs for gifting and festive celebrations.</p>
+        <a class="category-btn" href="products.html">VIEW PRODUCTS</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">About Rohit Farsan House</div>
+      <p>
+        At Rohit Farsan House, we take pride in bringing you the finest quality farsan and snacks. 
+        With years of experience and a passion for authentic flavors, we serve fresh, hygienic, 
+        and delicious products made with the finest ingredients. From traditional Gujarati farsan 
+        to modern snacks, we have something for everyone in the family.
+      </p>
+      <p>
+        Our commitment is to maintain the highest standards of quality and taste while keeping 
+        our prices affordable. Visit us today and experience the authentic taste of tradition!
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h2>Visit Us Today!</h2>
+      <p>📍 Location: Near kaka canteen opposite chamunda mobile shopee</p>
+      <p>📞 Phone: <a href="tel:9922110596">+91 99221 10596</a></p>
+      <p>🕒 Open: Mon-Sat, 9:00 AM - 10:00 PM</p>
+      <p>📧 Email: <a href="mailto:gj2561059@gmail.com">gj2561059@gmail.com</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Rohit Farsan House - All Rights Reserved</p>
+    <p>Made with ❤️ by <a href="https://zippity.biz" target="_blank">zippity</a></p>
+  </footer>
+</body>
+</html>

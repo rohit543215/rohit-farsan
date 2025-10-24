@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Us – Rohit Farsan House</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f9ef;
+      color: #222;
+    }
+    header {
+      background: #fff;
+      padding: 20px 0;
+      border-bottom: 1px solid #eaeaea;
+      overflow: hidden;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 2em;
+      color: #213217;
+      margin-left: 32px;
+      letter-spacing: -1px;
+      float: left;
+      text-decoration: none;
+    }
+    nav {
+      float: right;
+      margin-right: 32px;
+    }
+    nav a {
+      color: #4a4a4a;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #7fa443;
+      border-bottom: 2px solid #7fa443;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(120, 130, 101, 0.12);
+      clear: both;
+    }
+    .page-title {
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: #517C31;
+    }
+    .page-subtitle {
+      text-align: center;
+      font-size: 1.2em;
+      color: #578d2e;
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .contact-card {
+      background: #f4f9ef;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #dadada2e;
+      text-align: center;
+    }
+    .contact-icon {
+      font-size: 3em;
+      margin-bottom: 16px;
+    }
+    .contact-card h3 {
+      color: #4B7F2D;
+      font-size: 1.4em;
+      margin-bottom: 12px;
+    }
+    .contact-card p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 1.05em;
+    }
+    .contact-card a {
+      color: #73bf32;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+    .form-section {
+      background: #f8fff2;
+      border-radius: 14px;
+      padding: 32px;
+      margin: 32px 0;
+      box-shadow: 0 3px 16px rgba(130, 160, 60, 0.07);
+    }
+    .form-title {
+      font-size: 2em;
+      color: #4B7F2D;
+      margin-bottom: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #355c21;
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      font-size: 1em;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .submit-btn {
+      width: 100%;
+      background: #73bf32;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 100px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+    .submit-btn:hover {
+      background: #86d641;
+    }
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .success-msg, .error-msg {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .success-msg {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    .error-msg {
+      background: #ffebee;
+      color: #c62828;
+    }
+    .map-section {
+      margin-top: 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 300px;
+      background: #f4f9ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1em;
+      color: #666;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: #73bf32;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">Rohit Farsan House<span style="color:#E5C239;">&#9679;</span></a>
+    <nav>
+      <a href="shop.html">HOME</a>
+      <a href="products.html">PRODUCTS</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact-us.html" class="active">CONTACT</a>
+    </nav>
+    <div style="clear: both"></div>
+  </header>
+
+  <div class="container">
+    <div class="page-title">Contact Us</div>
+    <div class="page-subtitle">We'd love to hear from you!</div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>Visit Our Shop</h3>
+        <p>Rohit farsan house<br>
+        Near kaka canteen opposite chamunda mobile shopee<br>
+        Utam nagar 411023</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Call Us</h3>
+        <p><a href="tel:+919322431837">+91 93224 31837</a><br>
+        Mon-Sat: 9:00 AM - 10:00 PM</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h3>Email Us</h3>
+        <p><a href="mailto:gj2561059@gmail.com">gj2561059@gmail.com</a><br>
+        We reply within 24 hours</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-title">Send Us a Message</div>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+        <div class="success-msg" id="successMsg">Thank you! Your message has been sent successfully.</div>
+        <div class="error-msg" id="errorMsg">Sorry, something went wrong. Please try again.</div>
+      </form>
+    </div>
+
+    <div class="map-section">
+      📍 Google Maps Location (Add your map embed code here)
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Rohit Farsan House - All Rights Reserved</p>
+    <p>Made with ❤️ by <a href="https://zippity.biz" target="_blank">zippity</a></p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
+    const submitBtn = form.querySelector('.submit-btn');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Hide previous messages
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      // Simulate form submission (replace with actual backend/Supabase integration)
+      setTimeout(() => {
+        successMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        form.reset();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout – Rohit Farsan House</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f9ef;
+      color: #222;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(120,130,101,0.12);
+    }
+    h2 {
+      color: #4b7f2d;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .cart-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-item-name {
+      font-weight: bold;
+      color: #4b7f2d;
+    }
+    .cart-item-qty {
+      font-weight: bold;
+      color: #555;
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    button {
+      background: #73bf32;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 1.2em;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #5fa025;
+    }
+    .payment-method {
+      margin-top: 12px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <h2>Checkout</h2>
+  <div id="selectedProducts"></div>
+
+  <form id="checkoutForm">
+    <label for="address">Shipping Address</label>
+    <textarea id="address" rows="3" required placeholder="Enter your address"></textarea>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" />
+
+    <div class="payment-method">
+      <label>Payment Method</label>
+      <input type="radio" id="cod" name="payment" value="COD" checked disabled />
+      <label for="cod">Cash on Delivery (COD)</label>
+    </div>
+
+    <button type="submit">Place Order</button>
+  </form>
+
+  <script>
+    // Supabase credentials
+    const supabaseUrl = "https://ixgjtbpnqrvktnabouxj.supabase.co";
+    const supabaseAnonKey =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4Z2p0YnBucXJ2a3RuYWJvdXhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTE5NTcsImV4cCI6MjA3NTkyNzk1N30.SuCYIJmfNuxCRw-aKQg5eOtzBv7P3WiMngeFOn-I_7c";
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+    // Load cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('farsanCart')) || {};
+    const productsDiv = document.getElementById('selectedProducts');
+
+    if (Object.keys(cart).length === 0) {
+      productsDiv.innerHTML = '<p>Your cart is empty. Please add some products first.</p>';
+      document.getElementById('checkoutForm').style.display = 'none';
+    } else {
+      // Render products in cart
+      productsDiv.innerHTML = '<h3>Products Selected:</h3>';
+      Object.values(cart).forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+        itemDiv.innerHTML = `<span class="cart-item-name">${item.name}</span>
+                             <span class="cart-item-qty">Qty: ${item.quantity}</span>`;
+        productsDiv.appendChild(itemDiv);
+      });
+    }
+
+    document.getElementById('checkoutForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      const address = document.getElementById('address').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if(!address) {
+        alert('Please enter your shipping address.');
+        return;
+      }
+      if(!phone.match(/^\d{10}$/)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+      }
+
+      // Save each product in the cart as a row in Supabase
+      // Assumes "orders" table schema has: customer_add, customer_pho, product_name, quantity, order_date
+      let errorOccured = false;
+      for (const item of Object.values(cart)) {
+        const { error } = await supabase.from('orders').insert([{
+          customer_add: address,
+          customer_pho: phone,
+          product_name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+          order_date: new Date().toISOString()
+        }]);
+        if (error) {
+          errorOccured = true;
+          alert("Order failed: " + error.message);
+          break;
+        }
+      }
+
+      if(!errorOccured) {
+        alert('Order placed successfully! Thank you for shopping.');
+        localStorage.removeItem('farsanCart');
+        window.location.href = 'index.html'; // Or any confirmation page
+      }
+    });
+  </script>
+</body>
+</html>

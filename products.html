@@ -13,13 +13,18 @@
         font-family: "Segoe UI", Arial, sans-serif;
         background: #f4f9ef;
         color: #222;
+        padding-top: 70px;
       }
       header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
         background: #fff;
         padding: 20px 0;
         border-bottom: 1px solid #eaeaea;
         overflow: hidden;
-        position: relative;
+        z-index: 1000;
       }
       .logo {
         font-weight: bold;
@@ -40,6 +45,7 @@
         margin: 0 20px;
         font-weight: 600;
         position: relative;
+        font-size: 0.95em;
       }
       nav a.active,
       nav a:hover {
@@ -335,13 +341,137 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      /* Mobile Responsive Styles */
+      @media (max-width: 768px) {
+        body {
+          padding-top: 120px;
+        }
+        header {
+          padding: 15px 0;
+        }
+        .logo {
+          font-size: 1.5em;
+          margin-left: 16px;
+          float: none;
+          display: block;
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        nav {
+          float: none;
+          margin: 0;
+          text-align: center;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          padding: 0 10px;
+        }
+        nav a {
+          margin: 4px 8px;
+          font-size: 0.85em;
+          padding: 4px 0;
+        }
+        .cart-icon {
+          margin-left: 0;
+        }
+        .container {
+          margin: 20px 10px;
+          padding: 20px 15px;
+          border-radius: 12px;
+        }
+        h2 {
+          font-size: 1.3em;
+        }
+        .products-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          margin-top: 16px;
+          margin-bottom: 20px;
+        }
+        .product-card {
+          min-width: 100%;
+        }
+        .product-card h3 {
+          font-size: 1.1em;
+        }
+        .product-description,
+        .product-weight,
+        .product-price {
+          font-size: 0.95em;
+        }
+        .add-to-cart-btn {
+          font-size: 0.95em;
+          padding: 12px 12px;
+        }
+        .cart-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 14px;
+        }
+        .cart-item-image {
+          width: 60px;
+          height: 60px;
+        }
+        .cart-summary {
+          padding: 16px;
+        }
+        .checkout-btn {
+          font-size: 1em;
+          padding: 12px 16px;
+        }
+        .continue-shopping {
+          font-size: 0.95em;
+          padding: 10px 14px;
+        }
+        footer {
+          font-size: 0.9em;
+          padding: 10px;
+          margin-top: 20px;
+        }
+        .notification {
+          top: 8px;
+          right: 8px;
+          font-size: 0.96em;
+          padding: 10px 16px;
+        }
+      }
+      /* Tablet Responsive */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .logo {
+          font-size: 1.7em;
+          margin-left: 20px;
+        }
+        nav {
+          margin-right: 20px;
+        }
+        nav a {
+          margin: 0 12px;
+          font-size: 0.9em;
+        }
+        .container {
+          margin: 30px 20px;
+          padding: 32px;
+        }
+        h2 {
+          font-size: 1.6em;
+        }
+        .products-grid {
+          gap: 18px;
+        }
+        .notification {
+          top: 14px;
+          right: 14px;
+        }
+      }
     </style>
   </head>
   <body>
     <header>
       <a href="#" class="logo" onclick="showProducts(); return false;"
-        >Rohit Farsan House<span style="color: #e5c239">●</span></a
-      >
+        >Rohit Farsan House<span style="color: #e5c239">●</span></a>
       <nav>
         <a href="index.html">HOME</a>
         <a href="products.html" class="active">PRODUCTS</a>
@@ -355,9 +485,7 @@
 
       <div style="clear: both"></div>
     </header>
-
     <div id="notification" class="notification"></div>
-
     <!-- Products Page -->
     <div class="products-page" id="productsPage">
       <div class="container">
@@ -365,7 +493,6 @@
         <div class="products-grid" id="productsGrid"></div>
       </div>
     </div>
-
     <!-- Cart Page -->
     <div class="cart-page" id="cartPage">
       <div class="container">
@@ -376,7 +503,6 @@
         </button>
       </div>
     </div>
-
     <footer>
       <p>&copy; 2025 Rohit Farsan House - All Rights Reserved</p>
       <p>
@@ -384,7 +510,6 @@
         <a href="https://zippity.biz" target="_blank">zippity</a>
       </p>
     </footer>
-
     <script>
       const products = [
         {
@@ -424,9 +549,7 @@
           image: "shingdana.jpg",
         },
       ];
-
       let cart = {};
-
       function loadCart() {
         const saved = localStorage.getItem("farsanCart");
         if (saved) {
@@ -434,12 +557,10 @@
         }
         updateCartCount();
       }
-
       function saveCart() {
         localStorage.setItem("farsanCart", JSON.stringify(cart));
         updateCartCount();
       }
-
       function updateCartCount() {
         const count = Object.values(cart).reduce(
           (sum, item) => sum + item.quantity,
@@ -447,7 +568,6 @@
         );
         document.getElementById("cartCount").textContent = count;
       }
-
       function showNotification(message) {
         const notif = document.getElementById("notification");
         notif.textContent = message;
@@ -456,7 +576,6 @@
           notif.classList.remove("show");
         }, 2000);
       }
-
       function updateQuantity(productId, change) {
         const input = document.getElementById(`qty-${productId}`);
         let value = parseInt(input.value) + change;
@@ -464,12 +583,10 @@
         if (value > 99) value = 99;
         input.value = value;
       }
-
       function addToCart(productId) {
         const product = products.find((p) => p.id === productId);
         const qtyInput = document.getElementById(`qty-${productId}`);
         const quantity = parseInt(qtyInput.value);
-
         if (cart[productId]) {
           cart[productId].quantity += quantity;
         } else {
@@ -478,19 +595,16 @@
             quantity: quantity,
           };
         }
-
         saveCart();
         showNotification(`Added ${quantity} ${product.name} to cart!`);
         qtyInput.value = 1;
       }
-
       function removeFromCart(productId) {
         delete cart[productId];
         saveCart();
         renderCart();
         showNotification("Item removed from cart");
       }
-
       function updateCartQuantity(productId, change) {
         if (cart[productId]) {
           cart[productId].quantity += change;
@@ -502,7 +616,6 @@
           }
         }
       }
-
       function renderProducts() {
         const grid = document.getElementById("productsGrid");
         grid.innerHTML = products
@@ -527,11 +640,9 @@
           )
           .join("");
       }
-
       function renderCart() {
         const cartItems = document.getElementById("cartItems");
         const cartArray = Object.values(cart);
-
         if (cartArray.length === 0) {
           cartItems.innerHTML = `
             <div class="empty-cart">
@@ -542,12 +653,10 @@
           `;
           return;
         }
-
         const subtotal = cartArray.reduce(
           (sum, item) => sum + item.price * item.quantity,
           0
         );
-
         cartItems.innerHTML = `
           ${cartArray
             .map(
@@ -594,18 +703,15 @@
           </div>
         `;
       }
-
       function showProducts() {
         document.getElementById("productsPage").classList.remove("hidden");
         document.getElementById("cartPage").classList.remove("active");
       }
-
       function showCart() {
         document.getElementById("productsPage").classList.add("hidden");
         document.getElementById("cartPage").classList.add("active");
         renderCart();
       }
-
       function checkout() {
         window.location.href = "checkout.html";
       }

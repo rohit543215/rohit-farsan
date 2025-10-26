@@ -11,12 +11,18 @@
       font-family: "Segoe UI", Arial, sans-serif;
       background: #f4f9ef;
       color: #222;
+      padding-top: 70px;
     }
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       background: #fff;
       padding: 20px 0;
       border-bottom: 1px solid #eaeaea;
       overflow: hidden;
+      z-index: 1000;
     }
     .logo {
       font-weight: bold;
@@ -36,6 +42,7 @@
       text-decoration: none;
       margin: 0 20px;
       font-weight: 600;
+      font-size: 0.95em;
     }
     nav a.active,
     nav a:hover {
@@ -186,20 +193,145 @@
     footer a:hover {
       text-decoration: underline;
     }
-    @media (max-width: 950px) {
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 120px;
+      }
+      header {
+        padding: 15px 0;
+      }
+      .logo {
+        font-size: 1.5em;
+        margin-left: 16px;
+        float: none;
+        display: block;
+        text-align: center;
+        margin-bottom: 12px;
+      }
+      nav {
+        float: none;
+        margin: 0;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 10px;
+      }
+      nav a {
+        margin: 4px 8px;
+        font-size: 0.85em;
+        padding: 4px 0;
+      }
+      .container {
+        margin: 20px 10px;
+        padding: 20px 15px;
+        border-radius: 12px;
+      }
+      .headline {
+        font-size: 1.6em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        font-size: 1em;
+        padding: 0 10px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.3em;
+        margin-top: 18px;
+        margin-bottom: 16px;
+      }
       .categories {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        margin-bottom: 30px;
+        gap: 14px;
+      }
+      .category-card {
+        margin: 0 0 14px 0;
+        min-width: 100%;
+        padding: 24px 20px;
+      }
+      .category-card h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+      .category-card p {
+        font-size: 0.95em;
+        margin-bottom: 18px;
+      }
+      .category-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+      }
+      .card {
+        padding: 24px 20px;
+        margin: 24px 0;
+        border-radius: 12px;
+      }
+      .card-title {
+        font-size: 1.25em;
+        margin-bottom: 12px;
+      }
+      .card p {
+        font-size: 0.95em;
+      }
+      .contact-card {
+        padding: 20px 14px;
+        margin-top: 20px;
+        border-radius: 12px;
+      }
+      .contact-card h2 {
+        font-size: 1.18em;
+        margin-bottom: 10px;
+      }
+      .contact-card p {
+        font-size: 1em;
+        margin: 8px 0;
+      }
+      footer {
+        font-size: 0.9em;
+        padding: 14px;
+        margin-top: 24px;
+      }
+    }
+
+    /* Tablet Responsive */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .logo {
+        font-size: 1.7em;
+        margin-left: 20px;
+      }
+      nav {
+        margin-right: 20px;
+      }
+      nav a {
+        margin: 0 12px;
+        font-size: 0.9em;
+      }
+      .container {
+        margin: 30px 20px;
+        padding: 32px;
       }
       .headline {
         font-size: 2em;
+      }
+      .section-title {
+        font-size: 1.6em;
+        margin-top: 23px;
+        margin-bottom: 20px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html" class="logo">Rohit Farsan House<span style="color:#E5C239;">&#9679;</span></a>
+    <a href="index.html" class="logo">Rohit Farsan House<span style="color:#E5C239;">●</span></a>
     <nav>
       <a href="index.html" class="active">HOME</a>
       <a href="products.html">PRODUCTS</a>
